@@ -39,11 +39,11 @@ During the implementation, the CloudFormation template was updated to add new re
 
 The project also covered the complete lifecycle of the CloudFormation stack, from initial deployment and updates to the final removal of the infrastructure.
 
+**CREATE → UPDATE → DELETE**
+
+This project provided practical experience with **AWS infrastructure automation, Infrastructure as Code, resource dependencies, cloud networking, compute, storage, and infrastructure lifecycle management**.
+
 
 <p align="center">
   <img src="./overview-lab-cloudformation.png" alt="Overview do Lab CloudFormation" width="550">
 </p>
-
-**CREATE → UPDATE → DELETE**
-
-This project provided practical experience with **AWS infrastructure automation, Infrastructure as Code, resource dependencies, cloud networking, compute, storage, and infrastructure lifecycle management**.
