@@ -45,7 +45,7 @@ This project provided practical experience with **AWS infrastructure automation,
 
 
 <p align="center">
-  <img src="./iac-workflow.png" alt="Fluxo de trabalho de IaC" width="550">
+  <img src="./iac-workflow.png" alt="Fluxo de trabalho de IaC" width="600">
 </p>
 
 
