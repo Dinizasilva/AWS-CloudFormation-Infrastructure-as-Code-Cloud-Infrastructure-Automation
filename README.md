@@ -22,7 +22,7 @@
 
 HTML
 <p align="center">
-  <img src="./capa-lab-cloudformation.png" alt="Capa do Lab CloudFormation" width="550">
+  <img src="./capa-lab-cloudformation.png" alt="Capa do Lab CloudFormation" width="600">
 </p>
 
 
