@@ -26,19 +26,19 @@
 
 </p>
 
+
 ## Overview
 
-This project demonstrates the design, deployment, and lifecycle management of AWS cloud infrastructure using **AWS CloudFormation** and **Infrastructure as Code (IaC)** principles.
+This project demonstrates how AWS CloudFormation can be used to provision and manage cloud infrastructure through **Infrastructure as Code (IaC)**.
 
-Instead of provisioning resources individually through the AWS Management Console, the infrastructure was defined declaratively using **YAML templates**, enabling a more consistent, repeatable, and automated approach to cloud resource management.
+The infrastructure was defined using **YAML templates**, allowing AWS resources to be created and updated from a single declarative configuration instead of being provisioned individually through the AWS Management Console.
 
-The solution progressively builds an AWS environment by provisioning and integrating networking, security, storage, and compute resources, including an **Amazon VPC, Security Group, Amazon S3 bucket, and Amazon EC2 instance**.
+The environment was built progressively, starting with an **Amazon VPC and Security Group**, followed by the addition of an **Amazon S3 bucket** and an **Amazon EC2 instance**.
 
-The CloudFormation stack was also updated throughout the implementation to demonstrate how cloud infrastructure can evolve without manually recreating existing resources. Resource dependencies were managed using CloudFormation intrinsic functions such as `!Ref`, while **AWS Systems Manager Parameter Store** was used to dynamically retrieve the Amazon Linux AMI.
+During the implementation, the CloudFormation template was updated to add new resources while preserving the existing infrastructure. **CloudFormation intrinsic functions such as `!Ref`** were used to reference resources within the template, and **AWS Systems Manager Parameter Store** was used to retrieve the Amazon Linux AMI dynamically.
 
-The project concludes with the controlled deletion of the CloudFormation stack, demonstrating the complete infrastructure lifecycle:
+The project also covered the complete lifecycle of the CloudFormation stack, from initial deployment and updates to the final removal of the infrastructure.
 
-**CREATE → UPDATE → MANAGE → DELETE**
+**CREATE → UPDATE → DELETE**
 
-This hands-on implementation reinforces core **Cloud Engineering and Cloud Solutions** concepts, including infrastructure automation, declarative provisioning, resource orchestration, dependency management, and infrastructure lifecycle management.
-
+This project provided practical experience with **AWS infrastructure automation, Infrastructure as Code, resource dependencies, cloud networking, compute, storage, and infrastructure lifecycle management**.
