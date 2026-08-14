@@ -70,8 +70,9 @@ The infrastructure was built progressively, integrating networking, security, co
 
 
 <p align="center">
-  <img src="./diagrama-arquitetura-cloudformation.png" alt="Diagrama de Arquitetura AWS CloudFormation" width="550">
+  <img src="./arquitetura-cloudformation.png" alt="Arquitetura AWS CloudFormation" width="550">
 </p>
+
 
 ### Architecture Components
 
