@@ -20,9 +20,9 @@
 ## Cloud Engineering • Infrastructure as Code • Infrastructure Automation • AWS Solutions
 
 
-HTML
+
 <p align="center">
-  <img src="./capa-lab-cloudformation.png" alt="Capa do Lab CloudFormation" width="600">
+  <img src="./capa-lab-cloudformation.png" alt="Capa do Lab CloudFormation" width="650">
 </p>
 
 
