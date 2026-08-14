@@ -83,13 +83,13 @@ The architecture below represents the infrastructure I built using **AWS CloudFo
 
 Instead of creating each resource manually through the AWS Console, I defined the infrastructure in a YAML template and allowed CloudFormation to provision the resources and their relationships.
 
-At the network and compute layer, the stack creates a **VPC**, with its **Subnet** and **Security Group**, providing the environment in which the **EC2 instance** is deployed.
+At the network and compute layer, the stack creates a **VPC** and **Subnet**, together with a **Security Group** that controls access to the **EC2 instance**.
 
 The same CloudFormation template also provisions an **Amazon S3 bucket**, keeping storage as a separate component of the infrastructure.
 
-For the EC2 provisioning process, **AWS Systems Manager Parameter Store** is used to provide configuration information, while the **AMI** defines the image from which the instance is created.
+For the EC2 provisioning process, **AWS Systems Manager Parameter Store** is used to retrieve the **AMI ID dynamically**, while the selected **AMI** provides the image used to launch the instance.
 
-The architecture therefore brings together the main elements of the lab in a single infrastructure definition:
+The architecture brings the main elements of the lab together in a single infrastructure definition:
 
 **CloudFormation → VPC → Subnet / Security Group → EC2**
 
@@ -97,10 +97,9 @@ and, in parallel:
 
 **CloudFormation → S3**
 
-with **Parameter Store** and the **AMI** participating in the EC2 provisioning process.
+with **Parameter Store** providing the AMI information used during EC2 provisioning.
 
 More than simply creating AWS resources, this exercise allowed me to see how infrastructure can be described as code, with the relationships between its components defined before the environment is actually created.
-
 
 <p align="center">
   <img src="./arquitetura-cloudformation.png" alt="Arquitetura AWS CloudFormation" width="700">
