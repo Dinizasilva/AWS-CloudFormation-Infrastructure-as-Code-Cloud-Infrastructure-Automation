@@ -79,17 +79,32 @@ And that is what makes this laboratory especially meaningful to me: transforming
 
 ## Architecture
 
-This hands-on laboratory demonstrates how AWS CloudFormation can be used to provision and manage AWS cloud infrastructure through a declarative YAML template.
+The architecture below represents the infrastructure I built using **AWS CloudFormation**.
 
-The infrastructure was built progressively, integrating networking, security, compute, storage, and configuration management into a single CloudFormation stack.
+Instead of creating each resource manually through the AWS Console, I defined the infrastructure in a YAML template and allowed CloudFormation to provision the resources and their relationships.
+
+At the network and compute layer, the stack creates a **VPC**, with its **Subnet** and **Security Group**, providing the environment in which the **EC2 instance** is deployed.
+
+The same CloudFormation template also provisions an **Amazon S3 bucket**, keeping storage as a separate component of the infrastructure.
+
+For the EC2 provisioning process, **AWS Systems Manager Parameter Store** is used to provide configuration information, while the **AMI** defines the image from which the instance is created.
+
+The architecture therefore brings together the main elements of the lab in a single infrastructure definition:
+
+**CloudFormation → VPC → Subnet / Security Group → EC2**
+
+and, in parallel:
+
+**CloudFormation → S3**
+
+with **Parameter Store** and the **AMI** participating in the EC2 provisioning process.
+
+More than simply creating AWS resources, this exercise allowed me to see how infrastructure can be described as code, with the relationships between its components defined before the environment is actually created.
 
 
 <p align="center">
   <img src="./arquitetura-cloudformation.png" alt="Arquitetura AWS CloudFormation" width="700">
 </p>
-
-
-
 
 ### Architecture Components
 
