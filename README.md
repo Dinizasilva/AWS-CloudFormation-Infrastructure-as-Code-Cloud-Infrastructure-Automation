@@ -79,6 +79,10 @@ This experience reinforced something I have been building throughout my cloud jo
 
 And that is what makes this laboratory especially meaningful to me: transforming knowledge into a working Cloud solution.
 
+**study → practice → understand → build**
+
+And that is what makes this laboratory especially meaningful to me: transforming knowledge into a working Cloud solution.
+
 
 ## Architecture
 
