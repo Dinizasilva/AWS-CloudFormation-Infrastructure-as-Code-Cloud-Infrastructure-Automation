@@ -61,6 +61,24 @@ This experience strengthened my interest in **Cloud Engineering and Cloud Soluti
   <img src="./overview-lab-cloudformation.png" alt="Overview do Lab CloudFormation" width="600">
 </p>
 
+## CloudFormation Lab Experience
+
+This laboratory was one of the most meaningful moments of my AWS learning journey.
+
+After spending many hours studying CloudFormation and understanding its concepts, seeing the service actually provision and manage AWS resources in real time was a remarkable experience.
+
+I was no longer just studying Infrastructure as Code. I was defining infrastructure through a YAML template, deploying it through CloudFormation, observing the resources being created, and understanding how the components worked together.
+
+There is something genuinely powerful about seeing infrastructure come to life from code. It made me realize how powerful Infrastructure as Code can be: **an intelligent, practical, and structured way to transform infrastructure into code and manage it with greater consistency and control.**
+
+It was the moment when CloudFormation stopped being just a concept I had studied and became something I could actually use to build and manage cloud infrastructure.
+
+This experience reinforced something I have been building throughout my cloud journey:
+
+**study → practice → understand → build**
+
+And that is what makes this laboratory especially meaningful to me: transforming knowledge into a working Cloud solution.
+
 
 ## Architecture
 
@@ -72,6 +90,8 @@ The infrastructure was built progressively, integrating networking, security, co
 <p align="center">
   <img src="./arquitetura-cloudformation.png" alt="Arquitetura AWS CloudFormation" width="700">
 </p>
+
+
 
 
 ### Architecture Components
