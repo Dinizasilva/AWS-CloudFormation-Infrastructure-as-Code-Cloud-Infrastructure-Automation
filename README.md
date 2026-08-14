@@ -44,6 +44,19 @@ The project also covered the complete lifecycle of the CloudFormation stack, fro
 This project provided practical experience with **AWS infrastructure automation, Infrastructure as Code, resource dependencies, cloud networking, compute, storage, and infrastructure lifecycle management**.
 
 
+## CloudFormation Lab Experience
+
+This lab was one of the most meaningful moments of my AWS learning journey.
+
+After studying CloudFormation and understanding its concepts, seeing the service actually provision, update, and manage AWS resources in real time was a completely different experience.
+
+Watching the infrastructure come to life through a YAML template — and knowing that I was the one defining, updating, and managing those resources — made the concepts of **Infrastructure as Code** much more tangible.
+
+It was the moment when CloudFormation stopped being just a concept I had studied and became something I could actually use to build and manage cloud infrastructure.
+
+This experience strengthened my interest in **Cloud Engineering and Cloud Solutions**, especially in designing infrastructure that is automated, repeatable, and managed as code.
+
+
 <p align="center">
   <img src="./overview-lab-cloudformation.png" alt="Overview do Lab CloudFormation" width="550">
 </p>
