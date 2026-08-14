@@ -58,7 +58,7 @@ This experience strengthened my interest in **Cloud Engineering and Cloud Soluti
 
 
 <p align="center">
-  <img src="./overview-lab-cloudformation.png" alt="Overview do Lab CloudFormation" width="550">
+  <img src="./overview-lab-cloudformation.png" alt="Overview do Lab CloudFormation" width="600">
 </p>
 
 
