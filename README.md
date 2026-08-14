@@ -44,6 +44,11 @@ The project also covered the complete lifecycle of the CloudFormation stack, fro
 This project provided practical experience with **AWS infrastructure automation, Infrastructure as Code, resource dependencies, cloud networking, compute, storage, and infrastructure lifecycle management**.
 
 
+<p align="center">
+  <img src="./iac-workflow.png" alt="Fluxo de trabalho de IaC" width="550">
+</p>
+
+
 ## CloudFormation Lab Experience
 
 This laboratory was one of the most meaningful moments of my AWS learning journey.
