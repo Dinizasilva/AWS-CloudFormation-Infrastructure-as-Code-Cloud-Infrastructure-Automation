@@ -73,6 +73,7 @@ And that is what makes this laboratory especially meaningful to me: transforming
 </p>
 
 
+
 ## Architecture
 
 The architecture below represents the infrastructure I built using **AWS CloudFormation**.
@@ -100,6 +101,7 @@ More than simply creating AWS resources, this exercise allowed me to see how inf
 <p align="center">
   <img src="./arquitetura-cloudformation.png" alt="Arquitetura AWS CloudFormation" width="700">
 </p>
+
 
 ### Architecture Components
 
