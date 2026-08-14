@@ -60,3 +60,37 @@ This experience strengthened my interest in **Cloud Engineering and Cloud Soluti
 <p align="center">
   <img src="./overview-lab-cloudformation.png" alt="Overview do Lab CloudFormation" width="550">
 </p>
+
+
+## Architecture
+
+This hands-on laboratory demonstrates how AWS CloudFormation can be used to provision and manage AWS cloud infrastructure through a declarative YAML template.
+
+The infrastructure was built progressively, integrating networking, security, compute, storage, and configuration management into a single CloudFormation stack.
+
+
+<p align="center">
+  <img src="./diagrama-arquitetura-cloudformation.png" alt="Diagrama de Arquitetura AWS CloudFormation" width="550">
+</p>
+
+### Architecture Components
+
+| Component | Purpose |
+|---|---|
+| **AWS CloudFormation** | Orchestrates the infrastructure through Infrastructure as Code |
+| **Amazon VPC** | Provides the network environment for the infrastructure |
+| **Security Group** | Controls network access to the EC2 instance |
+| **Public Subnet** | Provides the network segment where the EC2 instance is deployed |
+| **Amazon EC2** | Provides the compute layer for the application server |
+| **Amazon S3** | Provides object storage managed as part of the CloudFormation stack |
+| **AWS Systems Manager Parameter Store** | Dynamically provides the Amazon Linux AMI |
+| **YAML Template** | Defines the desired infrastructure configuration |
+
+
+
+
+
+
+
+
+
