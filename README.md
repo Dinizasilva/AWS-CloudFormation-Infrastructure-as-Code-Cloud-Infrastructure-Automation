@@ -117,6 +117,16 @@ More than simply creating AWS resources, this exercise allowed me to see how inf
 | **YAML Template** | Defines the desired infrastructure configuration |
 
 
+## Infrastructure as Code
+
+AWS CloudFormation enables infrastructure to be defined and managed as code, replacing manual resource provisioning with a declarative and repeatable approach.
+
+In this laboratory, the infrastructure was described using a **YAML template**, defining the AWS resources and their relationships within a CloudFormation stack.
+
+The template was progressively updated during the implementation, allowing new resources to be added while CloudFormation managed the changes to the existing infrastructure.
+
+### CloudFormation Template
+
 
 
 
