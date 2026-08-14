@@ -1,7 +1,5 @@
 ## AWS-CloudFormation-Infrastructure-as-Code-Cloud-Infrastructure-Automation
 
-<div align="center">
-
 ** Designing, provisioning and managing AWS infrastructure using declarative YAML templates** 
 
 <div align="center">
