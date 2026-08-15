@@ -18,12 +18,8 @@ https://aws.amazon.com/s3/
 ![YAML](https://img.shields.io/badge/YAML-Template-000000?logo=yaml&logoColor=white)
 ![Infrastructure as Code](https://img.shields.io/badge/Infrastructure%20as%20Code-IaC-623CE4)
 
-![English](https://img.shields.io/badge/Documentation-English-1E88E5)
-![Português](https://img.shields.io/badge/Documentação-Português-2E7D32)
 
 </div>
-
-## Cloud Engineering • Infrastructure as Code • Infrastructure Automation • AWS Solutions
 
 
 
@@ -31,6 +27,14 @@ https://aws.amazon.com/s3/
   <img src="./capa-lab-cloudformation.png" alt="Capa do Lab CloudFormation" width="650">
 
 </p>
+
+
+## O que é isso
+
+Lab prático de AWS CloudFormation feito durante o AWS re/Start. O objetivo era simples: em vez de clicar no console AWS pra criar VPC, Subnet, Security Group, EC2 e S3, eu escrevi tudo num arquivo YAML e deixei o CloudFormation criar sozinho.
+Ciclo completo: CREATE → UPDATE → DELETE
+
+## A arquitetura
 
 
 ## Overview
