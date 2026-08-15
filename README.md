@@ -37,9 +37,11 @@ Ciclo completo: CREATE → UPDATE → DELETE
 
 ## A arquitetura
 
+
 <p align="center">
   <img src="./cloudformation-stack-architecture.png" alt="Diagrama de arquitetura da Stack CloudFormation" width="700px" />
 </p>
+
 
 
 ## O template YAML
@@ -113,6 +115,8 @@ Resources:
       BucketName: !Sub '${AWS::StackName}-bucket-${AWS::AccountId}'
       VersioningConfiguration:
         Status: Enabled
+
+
 
 
 
