@@ -1,4 +1,4 @@
-### AWS CloudFormation — Infrastructure as Code
+### AWS CloudFormation Infrastructure as Code AWS.
 **Escrevi uma infraestrutura inteira em YAML, cliquei em "Create Stack", e vi o AWS fazer o trabalho sujo por mim.
 Depois eu atualizei o mesmo template pra adicionar um S3 sem derrubar nada. E no final, deletei tudo com um clique. Medo e alívio ao mesmo tempo.**
 
