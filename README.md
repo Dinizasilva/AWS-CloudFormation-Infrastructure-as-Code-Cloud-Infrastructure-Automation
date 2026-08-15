@@ -151,6 +151,11 @@ O CloudFormation:
 Isso me mostrou o poder do estado gerenciado. O CloudFormation sabe o que já existe e só aplica deltas. Não precisa recriar a roda toda vez.
 
 
+<p align="center">
+  <img src="./cloudformation-stack-update-s3.png" alt="Atualização incremental da stack AWS com CloudFormation e S3" width="900px" />
+</p>
+
+
 
 
 ## Overview
