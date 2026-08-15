@@ -29,6 +29,7 @@ https://aws.amazon.com/s3/
 </p>
 
 
+
 ## O que é isso
 
 Lab prático de AWS CloudFormation feito durante o AWS re/Start. O objetivo era simples: em vez de clicar no console AWS pra criar VPC, Subnet, Security Group, EC2 e S3, eu escrevi tudo num arquivo YAML e deixei o CloudFormation criar sozinho.
@@ -50,7 +51,107 @@ O coração do lab é esse arquivo. Nele eu defini:
 * Security Group permitindo SSH (22) e HTTP (80) do meu IP
 * EC2 t3.micro com Amazon Linux, usando AMI do Parameter Store
 * S3 Bucket com versionamento
-* Trecho do template
+
+
+## Trecho do template
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Infraestrutura basica com VPC, EC2 e S3'
+
+Parameters:
+  AMIId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+Resources:
+  MinhaVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Ref AWS::StackName
+
+  MinhaSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MinhaVPC
+      CidrBlock: 10.0.1.0/24
+      MapPublicIpOnLaunch: true
+
+  MeuSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: SG para acesso SSH e HTTP
+      VpcId: !Ref MinhaVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: MEU_IP/32
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  MinhaInstancia:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref AMIId
+      InstanceType: t3.micro
+      SubnetId: !Ref MinhaSubnet
+      SecurityGroupIds:
+        - !Ref MeuSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub '${AWS::StackName}-EC2'
+
+  MeuBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-bucket-${AWS::AccountId}'
+      VersioningConfiguration:
+        Status: Enabled
+
+
+## Etapa 1: CREATE — Criar do zero
+
+Fui no console AWS → CloudFormation → Create Stack → Upload do YAML.
+
+Cliquei em "Submit" e fiquei olhando a tela de eventos: 
+
+
+CREATE_IN_PROGRESS  MinhaVPC
+CREATE_COMPLETE     MinhaVPC
+CREATE_IN_PROGRESS  MinhaSubnet
+CREATE_COMPLETE     MinhaSubnet
+CREATE_IN_PROGRESS  MeuSecurityGroup
+CREATE_COMPLETE     MeuSecurityGroup
+CREATE_IN_PROGRESS  MinhaInstancia
+CREATE_COMPLETE     MinhaInstancia
+CREATE_COMPLETE     Stack
+
+
+Cerca de 3 minutos. Sem eu clicar em nada. A VPC, a subnet, o SG, a EC2 — tudo surgindo sozinho a partir do meu YAML.
+O momento "GENIAL": Eu não criei a instância. Eu descrevi a instância. O CloudFormation criou. Isso é Infrastructure as Code.
+
+
+## Etapa 2: UPDATE — Adicionar sem destruir
+
+Depois que funcionou, quis adicionar um S3 Bucket no mesmo stack.
+Editei o YAML, adicionei o recurso MeuBucket, e fiz Update Stack com o novo template.
+
+O CloudFormation:
+
+* Manteve tudo que já existia (VPC, Subnet, SG, EC2)
+* Criou só o que era novo (S3)
+* Não tocou no que não mudou
+  
+Isso me mostrou o poder do estado gerenciado. O CloudFormation sabe o que já existe e só aplica deltas. Não precisa recriar a roda toda vez.
+
+
+
 
 ## Overview
 
