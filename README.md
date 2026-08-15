@@ -56,7 +56,6 @@ O coração do lab é esse arquivo. Nele eu defini:
 
 
 ## Trecho do template
-
 AWSTemplateFormatVersion: '2010-09-09'
 Description: 'Infraestrutura basica com VPC, EC2 e S3'
 
@@ -118,10 +117,6 @@ Resources:
 
 
 
-
-
-
-
 ## Etapa 1: CREATE — Criar do zero
 
 Fui no console AWS → CloudFormation → Create Stack → Upload do YAML.
@@ -129,15 +124,15 @@ Fui no console AWS → CloudFormation → Create Stack → Upload do YAML.
 Cliquei em "Submit" e fiquei olhando a tela de eventos: 
 
 
-CREATE_IN_PROGRESS  MinhaVPC
-CREATE_COMPLETE     MinhaVPC
-CREATE_IN_PROGRESS  MinhaSubnet
-CREATE_COMPLETE     MinhaSubnet
-CREATE_IN_PROGRESS  MeuSecurityGroup
-CREATE_COMPLETE     MeuSecurityGroup
-CREATE_IN_PROGRESS  MinhaInstancia
-CREATE_COMPLETE     MinhaInstancia
-CREATE_COMPLETE     Stack
+* CREATE_IN_PROGRESS  MinhaVPC
+* CREATE_COMPLETE     MinhaVPC
+* CREATE_IN_PROGRESS  MinhaSubnet
+* CREATE_COMPLETE     MinhaSubnet
+* CREATE_IN_PROGRESS  MeuSecurityGroup
+* CREATE_COMPLETE     MeuSecurityGroup
+* CREATE_IN_PROGRESS  MinhaInstancia
+* CREATE_COMPLETE     MinhaInstancia
+* CREATE_COMPLETE     Stack
 
 
 Cerca de 3 minutos. Sem eu clicar em nada. A VPC, a subnet, o SG, a EC2 — tudo surgindo sozinho a partir do meu YAML.
