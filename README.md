@@ -1,7 +1,13 @@
-## AWS-CloudFormation-Infrastructure-as-Code-Cloud-Infrastructure-Automation
+### AWS CloudFormation — Infrastructure as Code
+**Escrevi uma infraestrutura inteira em YAML, cliquei em "Create Stack", e vi o AWS fazer o trabalho sujo por mim.
+Depois eu atualizei o mesmo template pra adicionar um S3 sem derrubar nada. E no final, deletei tudo com um clique. Medo e alívio ao mesmo tempo.**
 
-** Designing, provisioning and managing AWS infrastructure using declarative YAML templates** 
-
+https://aws.amazon.com/
+https://aws.amazon.com/cloudformation/
+https://yaml.org/
+https://aws.amazon.com/ec2/
+https://aws.amazon.com/vpc/
+https://aws.amazon.com/s3/
 <div align="center">
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud%20Infrastructure-232F3E?logo=amazonaws&logoColor=white)
