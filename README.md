@@ -36,6 +36,21 @@ Ciclo completo: CREATE → UPDATE → DELETE
 
 ## A arquitetura
 
+<p align="center">
+  <img src="./cloudformation-stack-architecture.png" alt="Diagrama de arquitetura da Stack CloudFormation" width="700px" />
+</p>
+
+
+## O template YAML
+
+O coração do lab é esse arquivo. Nele eu defini:
+
+* VPC com CIDR block
+* Public Subnet dentro da VPC
+* Security Group permitindo SSH (22) e HTTP (80) do meu IP
+* EC2 t3.micro com Amazon Linux, usando AMI do Parameter Store
+* S3 Bucket com versionamento
+* Trecho do template
 
 ## Overview
 
