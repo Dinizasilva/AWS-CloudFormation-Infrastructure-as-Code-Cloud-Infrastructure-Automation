@@ -153,137 +153,97 @@ O CloudFormation:
 Isso me mostrou o poder do estado gerenciado. O CloudFormation sabe o que já existe e só aplica deltas. Não precisa recriar a roda toda vez.
 
 
-
-
-
-
-
-
-
-
 <p align="center">
-  <img src="./cloudformation-stack-update-s3.png" alt="Atualização incremental da stack AWS com CloudFormation e S3" width="900px" />
+  <img src="./cloudformation-incremental-update.png" alt="Atualização incremental da stack AWS com CloudFormation e S3" width="900px" />
 </p>
 
 
+## Etapa 3: DELETE — O medo do botão vermelho
 
-Etapa 3: DELETE — O medo do botão vermelho
 Última etapa do lab: deletar o stack.
-Fiquei com medo. Sério. Pensei: "E se ele não apagar direito? E se ficar recurso órfão? E se eu me arrependa?"
+Fiquei com medo. Sério. Pensei: "E se ele não apagar direito? E se ficar recurso órfão? E se eu me arrepender?"
 Cliquei em Delete. Confirmei.
 
 
+DELETE_IN_PROGRESS  MinhaInstancia
+DELETE_COMPLETE     MinhaInstancia
+DELETE_IN_PROGRESS  MeuSecurityGroup
+DELETE_COMPLETE     MeuSecurityGroup
+DELETE_IN_PROGRESS  MinhaSubnet
+DELETE_COMPLETE     MinhaSubnet
+DELETE_IN_PROGRESS  MinhaVPC
+DELETE_COMPLETE     MinhaVPC
+DELETE_COMPLETE     Stack
 
 
+Tudo limpo. Nenhum recurso ficou pra trás. O CloudFormation rastreia dependências e deleta na ordem certa.
 
 
+## O que eu aprendi: 
+Criar é fácil. Deletar de forma limpa é onde o CloudFormation prova que vale a pena.
 
 
+## O pulo do gato: Parameter Store
+
+Repare nisso aqui no template.
+
+Parameters:
+  AMIId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
 
 
+Em vez de hardcodar um AMI ID (ami-0abc123...), eu usei o AWS Systems Manager Parameter Store pra buscar a AMI mais recente do Amazon Linux automaticamente.
+
+Por que isso importa: AMI IDs mudam de região pra região e de tempos em tempos. Hardcodar é pedir pra quebrar. Usar Parameter Store = template portável e atualizado.
 
 
+## Como os recursos se conversam
+
+Usei intrinsic functions do CloudFormation pra criar dependências:
+
+| Função       | Onde usei                | Pra quê                                   |
+| ------------ | ------------------------ | ----------------------------------------- |
+| `!Ref`       | `VpcId: !Ref MinhaVPC`   | Referenciar um recurso dentro do template |
+| `!Sub`       | `BucketName: !Sub '...'` | Substituir variáveis em strings           |
+| `!Ref AMIId` | `ImageId: !Ref AMIId`    | Pegar o valor do parâmetro                |
+
+Usei intrinsic functions do CloudFormation pra criar dependências:
+
+Sem essas funções, eu teria que repetir IDs e valores. Com elas, o template fica limpo e conectado.
+
+ ## Tech Stack
+* AWS CloudFormation — orquestração da infraestrutura
+* YAML — linguagem declarativa do template
+* Amazon VPC — rede isolada
+* Public Subnet — segmento de rede pública
+* Security Group — firewall da instância
+* mazon EC2 — compute layer
+* Amazon S3 — storage com versionamento
+* AWS Systems Manager Parameter Store — AMI dinâmica
+* Intrinsic Functions (!Ref, !Sub) — conexão entre recursos
 
 
+## O que esse lab realmente me ensinou
 
-## Overview
+1.Console é para explorar. Código é para repetir. Eu posso criar uma VPC no console em 2 minutos. Mas se eu precisar criar 10? Ou recriar daqui 6 meses? YAML não esquece.
+2.UPDATE é mais importante que CREATE. Qualquer um clica em criar. Saber adicionar recurso novo sem derrubar o que existe é onde o CloudFormation brilha.
+3.DELETE limpo é raro no mundo real. Sem CloudFormation, deletar uma VPC manualmente é um pesadelo de dependências. Com ele, é um clique.
+4.Parameter Store é vida. Nunca mais vou hardcodar AMI ID. Nunca.
 
-This project demonstrates how AWS CloudFormation can be used to provision and manage cloud infrastructure through **Infrastructure as Code (IaC)**.
+## 🚧 Status
 
-The infrastructure was defined using **YAML templates**, allowing AWS resources to be created and updated from a single declarative configuration instead of being provisioned individually through the AWS Management Console.
+[x] Stack criado do zero (CREATE)
+[x] Stack atualizado com novo recurso (UPDATE)
+[x] Stack deletado sem deixar lixo (DELETE)
+[x] Template YAML documentado
+[ ] Refazer isso em Terraform (em breve)
 
-The environment was built progressively, starting with an **Amazon VPC and Security Group**, followed by the addition of an **Amazon S3 bucket** and an **Amazon EC2 instance**.
+## 🌐 Contato
 
-During the implementation, the CloudFormation template was updated to add new resources while preserving the existing infrastructure. **CloudFormation intrinsic functions such as `!Ref`** were used to reference resources within the template, and **AWS Systems Manager Parameter Store** was used to retrieve the Amazon Linux AMI dynamically.
-
-The project also covered the complete lifecycle of the CloudFormation stack, from initial deployment and updates to the final removal of the infrastructure.
-
-**CREATE → UPDATE → DELETE**
-
-This project provided practical experience with **AWS infrastructure automation, Infrastructure as Code, resource dependencies, cloud networking, compute, storage, and infrastructure lifecycle management**.
-
-
-<p align="center">
-  <img src="./iac-workflow.png" alt="Fluxo de trabalho de IaC" width="600">
-</p>
-
-
-## CloudFormation Lab Experience
-
-This laboratory was one of the most meaningful moments of my AWS learning journey.
-
-After spending many hours studying CloudFormation and understanding its concepts, seeing the service actually provision and manage AWS resources in real time was a remarkable experience.
-
-I was no longer just studying Infrastructure as Code. I was defining infrastructure through a YAML template, deploying it through CloudFormation, observing the resources being created, and understanding how the components worked together.
-
-There is something genuinely powerful about seeing infrastructure come to life from code. It made me realize how powerful Infrastructure as Code can be: **an intelligent, practical, and structured way to transform infrastructure into code and manage it with greater consistency and control.**
-
-It was the moment when CloudFormation stopped being just a concept I had studied and became something I could actually use to build and manage cloud infrastructure.
-
-This experience reinforced something I have been building throughout my cloud journey:
-
-**study → practice → understand → build**
-
-And that is what makes this laboratory especially meaningful to me: transforming knowledge into a working Cloud solution.
-
-
-<p align="center">
-  <img src="./overview-lab-cloudformation.png" alt="Overview do Lab CloudFormation" width="600">
-</p>
-
-
-
-## Architecture
-
-The architecture below represents the infrastructure I built using **AWS CloudFormation**.
-
-Instead of creating each resource manually through the AWS Console, I defined the infrastructure in a YAML template and allowed CloudFormation to provision the resources and their relationships.
-
-At the network and compute layer, the stack creates a **VPC** and **Subnet**, together with a **Security Group** that controls access to the **EC2 instance**.
-
-The same CloudFormation template also provisions an **Amazon S3 bucket**, keeping storage as a separate component of the infrastructure.
-
-For the EC2 provisioning process, **AWS Systems Manager Parameter Store** is used to retrieve the **AMI ID dynamically**, while the selected **AMI** provides the image used to launch the instance.
-
-The architecture brings the main elements of the lab together in a single infrastructure definition:
-
-**CloudFormation → VPC → Subnet / Security Group → EC2**
-
-and, in parallel:
-
-**CloudFormation → S3**
-
-with **Parameter Store** providing the AMI information used during EC2 provisioning.
-
-More than simply creating AWS resources, this exercise allowed me to see how infrastructure can be described as code, with the relationships between its components defined before the environment is actually created.
-
-<p align="center">
-  <img src="./arquitetura-cloudformation.png" alt="Arquitetura AWS CloudFormation" width="700">
-</p>
-
-
-### Architecture Components
-
-| Component | Purpose |
-|---|---|
-| **AWS CloudFormation** | Orchestrates the infrastructure through Infrastructure as Code |
-| **Amazon VPC** | Provides the network environment for the infrastructure |
-| **Security Group** | Controls network access to the EC2 instance |
-| **Public Subnet** | Provides the network segment where the EC2 instance is deployed |
-| **Amazon EC2** | Provides the compute layer for the application server |
-| **Amazon S3** | Provides object storage managed as part of the CloudFormation stack |
-| **AWS Systems Manager Parameter Store** | Dynamically provides the Amazon Linux AMI |
-| **YAML Template** | Defines the desired infrastructure configuration |
-
-
-## Infrastructure as Code
-
-AWS CloudFormation enables infrastructure to be defined and managed as code, replacing manual resource provisioning with a declarative and repeatable approach.
-
-In this laboratory, the infrastructure was described using a **YAML template**, defining the AWS resources and their relationships within a CloudFormation stack.
-
-The template was progressively updated during the implementation, allowing new resources to be added while CloudFormation managed the changes to the existing infrastructure.
-### CloudFormation Template
+💼 LinkedIn: linkedin.com/in/eliana-diniz
+📧 E-mail: eliana.dinizsilva@gmail.com
+"Criei uma VPC, uma subnet, um security group, uma EC2 e um S3. Sem clicar em nenhum deles. Só escrevi. E o AWS leu."
 
 
 
